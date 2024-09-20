@@ -6,22 +6,28 @@ from typing import Optional
 class Education:
     """Your educational history."""
 
-    institution: str
+    institution: Optional[str]
     """The name of the institution you attended."""
 
-    area: str
+    url: Optional[str]
+    """URL to your institution."""
+
+    area: Optional[str]
     """Your field of study like 'Arts'."""
 
-    study_type: str
+    study_type: Optional[str]
     """Like 'Bachelor', 'M.Sc.'."""
 
-    start_date: str
+    start_date: Optional[str]
     """The date you have started like '2014-06-29' or '2023-04' or 'Oct
     2022'."""
 
-    end_date: str
+    end_date: Optional[str]
     """The date the education was ended like '2014-06-29' or '2023-04' or 'Oct
     2022' or 'Now' if it is still ongoing."""
 
     score: Optional[str]
     """Your score like '3.54/4.0'."""
+
+    courses: Optional[list[str]]
+    """List of notable courses or subjects."""

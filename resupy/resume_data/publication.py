@@ -6,17 +6,17 @@ from typing import Optional
 class Publication:
     """Scientific publications you have made."""
 
-    name: str
+    name: Optional[str]
     """Name of the publication."""
 
-    publisher: str
+    publisher: Optional[str]
     """Name of the publisher."""
 
-    release_date: str
+    release_date: Optional[str]
     """The date of publication like '2014-06-29' or '2023-04' or 'Oct 2022'."""
 
     url: Optional[str]
     """URL to the publication."""
 
-    summary: str
+    summary: Optional[str]
     """A short summary of your publication."""
