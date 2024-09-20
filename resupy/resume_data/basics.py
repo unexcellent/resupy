@@ -6,7 +6,7 @@ from .profile import Profile
 
 
 @dataclass
-class ResumeBasics:
+class Basics:
     """Basic information about yourself."""
 
     name: str
