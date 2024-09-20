@@ -7,7 +7,7 @@ class Location:
     """Your location used for sending mail."""
 
     address: Optional[str]
-    """Your adress like '1234 Glücklichkeitsstraße'."""
+    """Your address like '1234 Glücklichkeitsstraße'."""
 
     postal_code: Optional[str]
     """Your postal code like '012345'."""
