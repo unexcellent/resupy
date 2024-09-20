@@ -1,0 +1,93 @@
+default_install_hook_types: [commit-msg, pre-commit]
+default_stages: [commit, merge-commit]
+minimum_pre_commit_version: 3.2.0
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-ast
+      - id: check-builtin-literals
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-vcs-permalinks
+      - id: check-xml
+      - id: check-yaml
+      - id: debug-statements
+      - id: destroyed-symlinks
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+
+  - repo: https://github.com/PyCQA/docformatter
+    rev: v1.7.5
+    hooks:
+      - id: docformatter
+        additional_dependencies:
+          - docformatter[tomli]
+
+  - repo: https://github.com/PyCQA/pydocstyle
+    rev: 6.3.0
+    hooks:
+      - id: pydocstyle
+        additional_dependencies:
+          - pydocstyle[toml]
+
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: 24.2.0
+    hooks:
+      - id: black
+
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: mypy
+        language: python
+        types_or: [python, toml, yaml]
+        pass_filenames: false
+        args: [resupy]
+        additional_dependencies:
+          - mypy==1.9.0
+          - capellambse[cli,decl,docs,httpfiles,png,termgraphics,test]
+          - click==8.1.7
+          - sphinx
+          - types-Pygments==2.15.0.1
+          - types-colorama==0.4.15.11
+          - types-docutils==0.20.0.1
+          - types-lxml==2024.04.14
+          - types-pytz==2023.3.0.0
+          - types-pyyaml==6.0.11
+          - types-requests==2.25.11
+          - types-setuptools==68.0.0.1
+          - types-six==1.16.21.8
+
+  - repo: https://github.com/pylint-dev/pylint
+    rev: v3.1.0
+    hooks:
+      - id: pylint
+        require_serial: false
+        args: [-rn, -sn, -dfixme, -dduplicate-code]
+        
+  - repo: https://github.com/qoomon/git-conventional-commits
+    rev: v2.1.1
+    hooks:
+      - id: conventional-commits
+          
+  # - repo: local  # needs to be disabled until tests exist
+  #   hooks:
+  #   - id: pytest
+  #     name: pytest
+  #     stages: [commit]
+  #     types: [python]
+  #     entry: ./.venv/bin/pytest
+  #     language: system
+  #     pass_filenames: false
+  #     always_run: true
