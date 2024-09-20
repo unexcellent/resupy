@@ -2,7 +2,6 @@ from dataclasses import dataclass
 from typing import Optional
 
 from .location import Location
-from .profile import Profile
 
 
 @dataclass
@@ -30,11 +29,5 @@ class Basics:
     url: Optional[str]
     """URL to your website."""
 
-    summary: Optional[str]
-    """A short 2-3 sentence biography about yourself."""
-
     location: Location
     """Your personal home location."""
-
-    profiles: Optional[list[Profile]]
-    """Your social media profiles."""
