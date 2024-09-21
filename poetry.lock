@@ -151,6 +151,17 @@ files = [
 colors = ["colorama (>=0.4.6)"]
 
 [[package]]
+name = "json5"
+version = "0.9.25"
+description = "A Python implementation of the JSON5 data format."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "json5-0.9.25-py3-none-any.whl", hash = "sha256:34ed7d834b1341a86987ed52f3f76cd8ee184394906b6e22a1e0deb9ab294e8f"},
+    {file = "json5-0.9.25.tar.gz", hash = "sha256:548e41b9be043f9426776f05df8635a00fe06104ea51ed24b67f908856e151ae"},
+]
+
+[[package]]
 name = "mccabe"
 version = "0.7.0"
 description = "McCabe checker, plugin for flake8"
@@ -447,4 +458,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10, <4.0"
-content-hash = "091f1503053a9b55b08260188ba156c5d92b9820421439cea8f967c686810158"
+content-hash = "6fcda6e34d7fa0e204a73cfebef964312d49d66208f7e47b52991116164246d9"
