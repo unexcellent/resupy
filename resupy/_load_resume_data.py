@@ -3,6 +3,8 @@ from pathlib import Path
 import json5
 import yaml
 
+from .exceptions import UnsupportedFileTypeError
+
 
 def load_resume_data(resume_data_path: Path) -> dict:
     """Load the resume data from a file."""
@@ -17,4 +19,4 @@ def load_resume_data(resume_data_path: Path) -> dict:
         if file_is_yaml:
             return yaml.load(resume_data_file, Loader=yaml.SafeLoader)
 
-        return {}
+        raise UnsupportedFileTypeError(f"The file type {resume_data_path.suffix} is not supported.")

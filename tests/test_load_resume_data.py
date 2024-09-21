@@ -3,6 +3,7 @@ from pathlib import Path
 import pytest
 
 from resupy._load_resume_data import load_resume_data
+from resupy.exceptions import UnsupportedFileTypeError
 
 # === Support methods =============================================================================
 
@@ -72,6 +73,16 @@ def test_yaml(tmp_path):
     assert actual == {
         "basics": {"name": "John Doe", "label": "The most average person you will ever meet"}
     }
+
+
+def test_unknown_file(tmp_path):
+    path = write_to_file(
+        content="",
+        path=tmp_path / "resume_data.UNSUPPORTED_SUFFIX",
+    )
+
+    with pytest.raises(UnsupportedFileTypeError):
+        load_resume_data(path)
 
 
 if __name__ == "__main__":
