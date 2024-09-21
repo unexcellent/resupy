@@ -10,7 +10,8 @@ def test_json(tmp_path):
             "name": "John Doe",
             "label": "The most average person you will ever meet"
         }
-    }"""
+    }
+    """
     path = tmp_path / "resume_data.json"
 
     with path.open("w") as file:
@@ -32,6 +33,23 @@ def test_json_with_comments(tmp_path):
         }
     }"""
     path = tmp_path / "resume_data.json"
+
+    with path.open("w") as file:
+        file.write(file_content)
+
+    actual = load_resume_data(path)
+    assert actual == {
+        "basics": {"name": "John Doe", "label": "The most average person you will ever meet"}
+    }
+
+
+def test_yaml(tmp_path):
+    file_content = """
+    basics:
+        name: "John Doe"
+        label: "The most average person you will ever meet"
+    """
+    path = tmp_path / "resume_data.yaml"
 
     with path.open("w") as file:
         file.write(file_content)

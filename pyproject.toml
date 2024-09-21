@@ -11,6 +11,7 @@ python = "^3.10, <4.0"
 pyhumps = "<4.0"
 pydantic = "<3.0"
 json5 = "<1.0"
+pyyaml = "<7.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "<25.0"
