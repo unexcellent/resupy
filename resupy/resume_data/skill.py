@@ -1,9 +1,11 @@
 from dataclasses import dataclass
 from typing import Optional
 
+from ._jsonresume_wrapper import _JsonresumeWrapper
+
 
 @dataclass
-class Skill:
+class Skill(_JsonresumeWrapper):
     """List of your professional skill-set."""
 
     name: Optional[str]

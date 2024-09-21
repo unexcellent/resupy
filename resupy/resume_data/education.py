@@ -1,9 +1,11 @@
 from dataclasses import dataclass
 from typing import Optional
 
+from ._jsonresume_wrapper import _JsonresumeWrapper
+
 
 @dataclass
-class Education:
+class Education(_JsonresumeWrapper):
     """Your educational history."""
 
     institution: Optional[str]

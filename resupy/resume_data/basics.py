@@ -1,12 +1,13 @@
 from dataclasses import dataclass
 from typing import Optional
 
+from ._jsonresume_wrapper import _JsonresumeWrapper
 from .location import Location
 from .profile import Profile
 
 
 @dataclass
-class Basics:
+class Basics(_JsonresumeWrapper):
     """Basic information about yourself."""
 
     name: Optional[str]

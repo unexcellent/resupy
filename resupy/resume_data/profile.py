@@ -1,9 +1,11 @@
 from dataclasses import dataclass
 from typing import Optional
 
+from ._jsonresume_wrapper import _JsonresumeWrapper
+
 
 @dataclass
-class Profile:
+class Profile(_JsonresumeWrapper):
     """A social network you participate in."""
 
     network: Optional[str]

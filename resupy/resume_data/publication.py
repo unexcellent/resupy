@@ -1,9 +1,11 @@
 from dataclasses import dataclass
 from typing import Optional
 
+from ._jsonresume_wrapper import _JsonresumeWrapper
+
 
 @dataclass
-class Publication:
+class Publication(_JsonresumeWrapper):
     """Scientific publications you have made."""
 
     name: Optional[str]

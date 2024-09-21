@@ -1,9 +1,11 @@
 from dataclasses import dataclass
 from typing import Optional
 
+from ._jsonresume_wrapper import _JsonresumeWrapper
+
 
 @dataclass
-class Language:
+class Language(_JsonresumeWrapper):
     """A language you can speak."""
 
     language: Optional[str]
