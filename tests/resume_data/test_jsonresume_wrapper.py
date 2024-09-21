@@ -135,6 +135,13 @@ def test_from_dict__nested_layers():
     )
 
 
+def test_from_dict__wrong_field_type():
+    source_dict = {"keywords": "Black Magic"}  # should be of type list[str]
+
+    with pytest.raises(TypeError):
+        Skill.from_dict(source_dict)
+
+
 def test_from_dict__integration():
     source_dict = {  # source: https://github.com/jsonresume/resume-schema/blob/50798e359292ad4448d95b3bb0de5f694d6bcc4b/sample.resume.json
         "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",

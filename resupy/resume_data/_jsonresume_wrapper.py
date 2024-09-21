@@ -13,4 +13,9 @@ class _JsonresumeWrapper(pydantic.BaseModel):
         # case, the field names have to be decamelized first.
         sanatized_source_dict = humps.decamelize(source_dict)
 
-        return cls(**sanatized_source_dict)
+        try:
+            class_instance = cls(**sanatized_source_dict)  # todo: improve error message
+        except pydantic.ValidationError as e:
+            raise TypeError(e) from e
+
+        return class_instance
