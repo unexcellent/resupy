@@ -1,7 +1,6 @@
 import pytest
 
-from resupy.resume_data.language import Language
-from resupy.resume_data.skill import Skill
+from resupy.resume_data import Language, Skill
 
 
 def test_from_dict__single_layer_all_fields_present():
