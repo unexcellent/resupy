@@ -9,7 +9,8 @@ def test_from_dict__simple():
         "fluency": "Native",
     }
 
-    assert Language.from_dict(source_dict) == Language(
+    actual = Language.from_dict(source_dict)
+    assert actual == Language(
         language="English",
         fluency="Native",
     )
@@ -26,7 +27,8 @@ def test_from_dict__unexpected_field():
         "UNEXPECTED_ARGUMENT": "some_value",
     }
 
-    assert Skill.from_dict(source_dict) == Skill(
+    actual = Skill.from_dict(source_dict)
+    assert actual == Skill(
         name="Microsoft Excel",
         level="I can run Doom on it.",
         keywords=[
@@ -44,7 +46,8 @@ def test_from_dict__missing_field():
         # summary field is missing
     }
 
-    assert Award.from_dict(source_dict) == Award(
+    actual = Award.from_dict(source_dict)
+    assert actual == Award(
         title="Milwaukee Hot Dog Eating Champion",
         date="2012-06-14",
         awarder="Major League Gluttony",
@@ -58,7 +61,8 @@ def test_from_dict__camel_case_to_snake_case():
         "countryCode": "FR",
     }
 
-    assert Location.from_dict(source_dict) == Location(
+    actual = Location.from_dict(source_dict)
+    assert actual == Location(
         postal_code="1235",
         country_code="FR",
     )
@@ -73,7 +77,8 @@ def test_from_dict__nested_layers():
         },
     }
 
-    assert Basics.from_dict(source_dict) == Basics(
+    actual = Basics.from_dict(source_dict)
+    assert actual == Basics(
         name="Bilbo Baggins",
         location=Location(
             city="Bag End",
