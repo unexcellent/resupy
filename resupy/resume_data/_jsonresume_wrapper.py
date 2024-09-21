@@ -4,4 +4,4 @@ class _JsonresumeWrapper:
     @classmethod
     def from_dict(cls, dict_data: dict) -> "_JsonresumeWrapper":
         """Construct this class from a jsonresume dict."""
-        return _JsonresumeWrapper()
+        return cls(**dict_data)
