@@ -1,5 +1,7 @@
 from dataclasses import dataclass, fields
 
+import humps  # type: ignore
+
 
 @dataclass
 class _JsonresumeWrapper:
@@ -16,6 +18,10 @@ class _JsonresumeWrapper:
 
         sanitized_dict_data = {}
         for field_name in cls.field_names():
-            sanitized_dict_data[field_name] = dict_data.get(field_name)
+            # Since the dataclass fields are in snake case and the jsonresume fields are in camel
+            # case, the field names have to be camelized first.
+            source_dict_key = humps.camelize(field_name)
+
+            sanitized_dict_data[field_name] = dict_data.get(source_dict_key)
 
         return cls(**sanitized_dict_data)

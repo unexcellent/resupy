@@ -8,6 +8,7 @@ repository = "https://github.com/unexcellent/resupy"
 
 [tool.poetry.dependencies]
 python = "^3.10, <4.0"
+pyhumps = "<4.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "<25.0"

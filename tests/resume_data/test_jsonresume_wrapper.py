@@ -1,9 +1,9 @@
 import pytest
 
-from resupy.resume_data import Award, Language, Skill
+from resupy.resume_data import Award, Language, Location, Skill
 
 
-def test_from_dict__single_layer_all_fields_present():
+def test_from_dict__simple():
     dict_data = {
         "language": "English",
         "fluency": "Native",
@@ -15,7 +15,7 @@ def test_from_dict__single_layer_all_fields_present():
     )
 
 
-def test_from_dict__single_layer_unexpected_field():
+def test_from_dict__unexpected_field():
     dict_data = {
         "name": "Microsoft Excel",
         "level": "I can run Doom on it.",
@@ -36,7 +36,7 @@ def test_from_dict__single_layer_unexpected_field():
     )
 
 
-def test_from_dict__single_layer_missing_field():
+def test_from_dict__missing_field():
     dict_data = {
         "title": "Milwaukee Hot Dog Eating Champion",
         "date": "2012-06-14",
@@ -49,6 +49,18 @@ def test_from_dict__single_layer_missing_field():
         date="2012-06-14",
         awarder="Major League Gluttony",
         summary=None,
+    )
+
+
+def test_from_dict__camel_case_to_snake_case():
+    dict_data = {
+        "postalCode": "1235",
+        "countryCode": "FR",
+    }
+
+    assert Location.from_dict(dict_data) == Location(
+        postal_code="1235",
+        country_code="FR",
     )
 
 
