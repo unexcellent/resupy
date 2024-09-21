@@ -81,13 +81,13 @@ repos:
     hooks:
       - id: conventional-commits
           
-  # - repo: local  # needs to be disabled until tests exist
-  #   hooks:
-  #   - id: pytest
-  #     name: pytest
-  #     stages: [commit]
-  #     types: [python]
-  #     entry: ./.venv/bin/pytest
-  #     language: system
-  #     pass_filenames: false
-  #     always_run: true
+  - repo: local
+    hooks:
+    - id: pytest
+      name: pytest
+      stages: [commit]
+      types: [python]
+      entry: ./.venv/bin/pytest
+      language: system
+      pass_filenames: false
+      always_run: true

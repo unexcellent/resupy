@@ -177,4 +177,4 @@ cython_debug/
 .vscode/*
 
 # Sandbox directory for all files that should stay private
-sandbox/*
+sandbox
