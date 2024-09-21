@@ -1,6 +1,6 @@
 import pytest
 
-from resupy.resume_data import Language, Skill
+from resupy.resume_data import Award, Language, Skill
 
 
 def test_from_dict__single_layer_all_fields_present():
@@ -26,8 +26,30 @@ def test_from_dict__single_layer_unexpected_field():
         "UNEXPECTED_ARGUMENT": "some_value",
     }
 
-    with pytest.raises(TypeError):
-        Skill.from_dict(dict_data)
+    assert Skill.from_dict(dict_data) == Skill(
+        name="Microsoft Excel",
+        level="I can run Doom on it.",
+        keywords=[
+            "Office",
+            "Spreadsheets",
+        ],
+    )
+
+
+def test_from_dict__single_layer_missing_field():
+    dict_data = {
+        "title": "Milwaukee Hot Dog Eating Champion",
+        "date": "2012-06-14",
+        "awarder": "Major League Gluttony",
+        # summary field is missing
+    }
+
+    assert Award.from_dict(dict_data) == Award(
+        title="Milwaukee Hot Dog Eating Champion",
+        date="2012-06-14",
+        awarder="Major League Gluttony",
+        summary=None,
+    )
 
 
 if __name__ == "__main__":
