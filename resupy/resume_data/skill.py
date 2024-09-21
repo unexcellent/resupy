@@ -8,11 +8,11 @@ from ._jsonresume_wrapper import _JsonresumeWrapper
 class Skill(_JsonresumeWrapper):
     """List of your professional skill-set."""
 
-    name: Optional[str]
+    name: Optional[str] = None
     """The name of your skill like 'Cooking'."""
 
-    level: Optional[str]
+    level: Optional[str] = None
     """Descriptor of your skill-level."""
 
-    keywords: Optional[list[str]]
+    keywords: Optional[list[str]] = None
     """List some keywords pertaining to this skill."""

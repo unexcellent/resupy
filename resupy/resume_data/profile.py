@@ -8,11 +8,11 @@ from ._jsonresume_wrapper import _JsonresumeWrapper
 class Profile(_JsonresumeWrapper):
     """A social network you participate in."""
 
-    network: Optional[str]
+    network: Optional[str] = None
     """Name of the network like 'Facebook' or 'Github'."""
 
-    username: Optional[str]
+    username: Optional[str] = None
     """Your username."""
 
-    url: Optional[str]
+    url: Optional[str] = None
     """The URL to your profile."""

@@ -23,35 +23,35 @@ class ResumeData(_JsonresumeWrapper):
     basics: Optional[Basics]
     """Basic information about yourself."""
 
-    work: Optional[list[Work]]
+    work: Optional[list[Work]] = None
     """Your job positions."""
 
-    volunteer: Optional[list[Volunteer]]
+    volunteer: Optional[list[Volunteer]] = None
     """Your volunteering experience."""
 
-    education: Optional[list[Education]]
+    education: Optional[list[Education]] = None
     """Your educational history."""
 
-    awards: Optional[list[Award]]
+    awards: Optional[list[Award]] = None
     """Awards you have received."""
 
-    certificates: Optional[list[Certificate]]
+    certificates: Optional[list[Certificate]] = None
     """Certificates you have received."""
 
-    publications: Optional[list[Publication]]
+    publications: Optional[list[Publication]] = None
     """Any publications you have made."""
 
-    skills: Optional[list[Skill]]
+    skills: Optional[list[Skill]] = None
     """Your professional skills."""
 
-    languages: Optional[list[Language]]
+    languages: Optional[list[Language]] = None
     """The languages you know."""
 
-    interests: Optional[list[Interest]]
+    interests: Optional[list[Interest]] = None
     """Your private interests."""
 
-    references: Optional[list[Reference]]
+    references: Optional[list[Reference]] = None
     """Any references you want to list."""
 
-    projects: Optional[list[Project]]
+    projects: Optional[list[Project]] = None
     """Specific career projects."""
