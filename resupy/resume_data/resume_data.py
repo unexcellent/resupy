@@ -1,4 +1,3 @@
-from dataclasses import dataclass
 from typing import Optional
 
 from ._jsonresume_wrapper import _JsonresumeWrapper
@@ -16,7 +15,6 @@ from .volunteer import Volunteer
 from .work import Work
 
 
-@dataclass
 class ResumeData(_JsonresumeWrapper):
     """Root data container of resume data."""
 

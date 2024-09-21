@@ -1,6 +1,6 @@
 import pytest
 
-from resupy.resume_data import Award, Basics, Language, Location, Skill
+from resupy.resume_data import Award, Basics, Language, Location, Profile, Skill
 
 
 def test_from_dict__simple():
@@ -68,6 +68,39 @@ def test_from_dict__camel_case_to_snake_case():
     )
 
 
+def test_from_dict__list():
+    source_dict = {
+        "profiles": [
+            {
+                "network": "Twitter",
+                "username": "xkcd",
+                "url": "https://www.twitter.com",
+            },
+            {
+                "network": "SoundCloud",
+                "username": "lil programmer",
+                "url": "https://soundcloud.example.com",
+            },
+        ]
+    }
+
+    actual = Basics.from_dict(source_dict)
+    assert actual == Basics(
+        profiles=[
+            Profile(
+                network="Twitter",
+                username="xkcd",
+                url="https://www.twitter.com",
+            ),
+            Profile(
+                network="SoundCloud",
+                username="lil programmer",
+                url="https://soundcloud.example.com",
+            ),
+        ]
+    )
+
+
 def test_from_dict__nested_layers():
     source_dict = {
         "name": "Bilbo Baggins",
@@ -88,4 +121,4 @@ def test_from_dict__nested_layers():
 
 
 if __name__ == "__main__":
-    pytest.main([__file__, "--disable-pytest-warnings", "--cache-clear", "-v"])
+    pytest.main([__file__, "-v"])

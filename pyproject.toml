@@ -9,6 +9,7 @@ repository = "https://github.com/unexcellent/resupy"
 [tool.poetry.dependencies]
 python = "^3.10, <4.0"
 pyhumps = "<4.0"
+pydantic = "<3.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "<25.0"
@@ -37,6 +38,7 @@ show_error_codes = true
 warn_redundant_casts = true
 warn_unreachable = true
 python_version = "3.12"
+ignore_missing_imports = true
 disable_error_code = [
   "call-arg",
 ]
