@@ -1,13 +1,15 @@
 from pathlib import Path
 
+import pdfkit
+
+from ._load_resume_data import load_resume_data
 from .templates import Coruscant, TemplateABC
 
 
 def create_resume(
     resume_data: dict | Path,
     output_path: Path,
-    template: type[TemplateABC] = Coruscant,
-    quiet: bool = False,
+    template_class: type[TemplateABC] = Coruscant,
 ):
     """Create a resume based on JSONResume and save it as a PDF.
 
@@ -15,11 +17,23 @@ def create_resume(
         resume_data: The data describing your resume. It needs to comply with the JSONResume schema
             (see https://jsonresume.org/). It can either be supplied as a dictionary directly or
             as a Path to either a .json or .yaml file.
-        template: The template that should be used. Either a pre-defined template can be used
+        template_class: The template that should be used. Either a pre-defined template can be used
             (pick one from resupy.templatess) or a custom one can be used. If you created a nice
             looking template feel free to add it to the existing collection via GitHub!
         output_path: Location where the generated PDF should be outputted.
-        quiet: If True, only minimal console output is produced. Defaults to False.
 
     # TODO: add examples
     """
+    if isinstance(resume_data, Path):
+        resume_data_dict = load_resume_data(resume_data)
+    else:
+        resume_data_dict = resume_data
+
+    template = template_class(resume_data_dict)
+    html_resume = template.generate_html()
+
+    _write_pdf(html_resume.prettify(), output_path)
+
+
+def _write_pdf(html_string: str, output_path: Path):
+    pdfkit.from_string(html_string, str(output_path))
