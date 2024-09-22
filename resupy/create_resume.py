@@ -36,4 +36,14 @@ def create_resume(
 
 
 def _write_pdf(html_string: str, output_path: Path):
-    pdfkit.from_string(html_string, str(output_path))
+    pdfkit.from_string(
+        html_string,
+        str(output_path),
+        options={
+            "--margin-top": "0",
+            "--margin-bottom": "0",
+            "--margin-left": "0",
+            "--margin-right": "0",
+            "--title": "Resume",
+        },
+    )
