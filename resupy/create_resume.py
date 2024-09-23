@@ -30,12 +30,12 @@ def create_resume(
         resume_data_dict = resume_data
 
     template = template_class(resume_data_dict)
-    html_resume = template.generate_html()
+    html_resume, css_path = template.generate_html()
 
-    _write_pdf(html_resume.prettify(), output_path)
+    _write_pdf(html_resume.prettify(), css_path, output_path)
 
 
-def _write_pdf(html_string: str, output_path: Path):
+def _write_pdf(html_string: str, css_path: Path, output_path: Path):
     pdfkit.from_string(
         html_string,
         str(output_path),
@@ -46,4 +46,5 @@ def _write_pdf(html_string: str, output_path: Path):
             "--margin-right": "0",
             "--title": "Resume",
         },
+        css=str(css_path),
     )

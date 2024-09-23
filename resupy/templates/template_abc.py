@@ -1,4 +1,5 @@
 import abc
+from pathlib import Path
 
 from bs4 import BeautifulSoup
 
@@ -11,5 +12,5 @@ class TemplateABC(abc.ABC):
         """Construct this template."""
 
     @abc.abstractmethod
-    def generate_html(self) -> BeautifulSoup:
+    def generate_html(self) -> tuple[BeautifulSoup, Path]:
         """Return the fully rendered HTML."""

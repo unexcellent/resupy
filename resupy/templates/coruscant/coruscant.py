@@ -16,7 +16,7 @@ class Coruscant(TemplateABC):
         """Construct this template."""
         self.resume_data = ResumeData.from_dict(resume_data_dict)
 
-    def generate_html(self) -> BeautifulSoup:
+    def generate_html(self) -> tuple[BeautifulSoup, Path]:
         """Return the fully rendered HTML."""
 
         environment = jinja2.Environment(loader=jinja2.FileSystemLoader(str(Path(__file__).parent)))
@@ -24,4 +24,6 @@ class Coruscant(TemplateABC):
 
         html = BeautifulSoup(template.render(resume_data=self.resume_data), "html.parser")
 
-        return html
+        css_path = Path(__file__).parent / "style.css"
+
+        return html, css_path
