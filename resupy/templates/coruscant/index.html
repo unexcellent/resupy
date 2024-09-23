@@ -1,12 +1,19 @@
 <body>
-
     <div class="root">
-
         <div class="basics-box">
-            <img src="{{ resume_data.basics.image }}">
-            {{ resume_data.basics.name }}
+            <div class="basics-wrapper">
+                <div class="profile-image">
+                    <img src="{{ resume_data.basics.image }}">
+                </div>
+                <div class="name-and-label">
+                    <div class="name">
+                        {{ resume_data.basics.name }}
+                    </div>
+                    <div class="label">
+                        {{ resume_data.basics.label }}
+                    </div>
+                </div>
+            </div>
         </div>
-
     </div>
-
 </body>
