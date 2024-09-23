@@ -45,6 +45,7 @@ def _write_pdf(html_string: str, css_path: Path, output_path: Path):
             "--margin-left": "0",
             "--margin-right": "0",
             "--title": "Resume",
+            "--enable-local-file-access": True,
         },
         css=str(css_path),
     )
